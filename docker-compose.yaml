@@ -1,0 +1,33 @@
+version: "3.8"
+
+networks:
+  bridge-net:
+    name: spring-boot-mq-demo-net
+
+services:
+  rabbit-mq:
+    container_name: rabbit-mq-management
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      bridge-net:
+
+  spring-boot-mq-demo-app:
+    container_name: spring-boot-rabbit-mq-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    links:
+      - rabbit-mq
+    environment:
+      RABBIT_MQ_HOST: rabbit-mq
+      RABBIT_MQ_PORT: 5672
+      RABBIT_MQ_USERNAME: guest
+      RABBIT_MQ_PASSWORD: guest
+    networks:
+      bridge-net:
+    restart: on-failure

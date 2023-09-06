@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: docker
+#server:
+#  port: 0

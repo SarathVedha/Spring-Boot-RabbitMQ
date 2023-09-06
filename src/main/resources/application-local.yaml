@@ -1,0 +1,19 @@
+# Spring auto Config will connect for local config (if external means change the values)
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# Custom RabbitMQ Queue Properties
+rabbit:
+  mq:
+    queue:
+      exchange-name: vedha-exchange
+      normal: # Supports String
+        name: vedha-queue
+        routing-key-name: vedha-routing
+      json: # Supports Json
+        name: vedha-json-queue
+        routing-key-name: vedha-json-routing
