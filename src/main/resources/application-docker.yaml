@@ -17,3 +17,29 @@ rabbit:
       json: # Supports Json
         name: vedha-json-queue
         routing-key-name: vedha-json-routing
+
+management:
+  info:
+    java:
+      enabled: true
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  health:
+    rabbit:
+      enabled: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: Spring Boot RabbitMQ Demo
+    environment: ${spring.profiles.active}
+    version: '@project.version@' # Reading From Pom

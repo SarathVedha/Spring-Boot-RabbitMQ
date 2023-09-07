@@ -1,5 +1,7 @@
 spring:
+  application:
+    name: RabbitMQ Demo
   profiles:
-    active: docker
+    active: local
 #server:
 #  port: 0
