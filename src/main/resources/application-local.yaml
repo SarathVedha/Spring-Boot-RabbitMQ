@@ -24,6 +24,8 @@ management:
       enabled: true
     env:
       enabled: true
+    os:
+      enabled: true
   endpoints:
     web:
       exposure:
